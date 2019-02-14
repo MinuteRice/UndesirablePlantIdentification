@@ -1,2 +1,28 @@
 # UndesirablePlantIdentification
 Main EE551 Semester Project
+
+Project Proposal:
+	
+There are 915 million acres of farm land in the United States, all of which use harmful herbicides to kill weeds that inhibit the production of the crops. These herbicides are necessary to make farming fiscally possible but the environmental and human damage these carcinogenic chemicals cause is unacceptable. This project will utilize Python’s image processing and machine learning capabilities to identify known weeds in a farm setting. This capability can allow for the identification of weeds and the subsequent precision application of herbicides. The precision application of herbicides could drastically reduce the amount of chemicals applied to our land, its stewards, and our crops.
+
+Architecture:
+•	Python Image Processing Library
+  -	To enable the analysis and data collection of single images
+  -	Possibly OpenCV
+•	Python ML Library
+  -	To implement an artificial neural network and decision making capabilities
+  -	Possibly Tensorflow
+•	Other Standard Python Libraries
+  -	NumPy
+  -	SciPy
+
+To Do & Delivery Dates:
+•	2/22 – Choose Image Processing Library
+•	2/22 – Choose ML Library
+•	2/22 – Identify any other Libraries Needed
+•	3/1 – Have libraries functioning
+•	3/8 – Be able to conduct image processing
+•	3/29 – Have image data (visit to local farm to gather photos/source from google or database)
+•	4/5 – Be able to process select images of weeds and categorize
+•	4/19 – Work on expansion of exposure to images and be able to identify weeds consistently
+•	4/26 – Cleaned up organization and documentation – Final
