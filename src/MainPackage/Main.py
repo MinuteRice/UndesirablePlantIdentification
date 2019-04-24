@@ -1,36 +1,40 @@
-
+import argparse
 import numpy as np
 import cv2
 
-"""
-Global Instances and Variables ------------->
-"""
+# define command line argument
+parse = argparse.ArgumentParser()
+parse.add_argument("-v", "--video", required=True, help='Full path to video')
+args = vars(parse.parse_args())
+
 # initialize video instance with video full root
-vid = cv2.VideoCapture('C:/Users\Test\PycharmProjects/UWIDS/vid3.MOV')
+vid = cv2.VideoCapture(args["video"]) #'C:/Users\Test\PycharmProjects/UWIDS/vid3.MOV'
 
 # define thresholds for Hue, Saturation, Value scale
 hsvLowerThresh = [20, 10, 10] #50-20-20
 hsvUpperThresh = [100, 255, 255] #100-255-255
-vid_valid = False
+frame_counter = 0
 
-"""
-Main Function Below ----------------------->
-"""
+# video valid function
+def vidValid():
+    # check that video file is valid/compatible
+    if vid.read() == (False, None):
+        print('Script Aborted: Error Opening Video File! Please Make Sure To Supply The Full Path For Argument --video')
+    else:
+        return True
 
 # main video processing function
 def runMainProcess():
-    global vid_valid
-    # check that video file is valid/compatible
-    if vid.read() == (False, None):
-        print('Error Opening Video File!')
-    else:
-        vid_valid = True
-
-    # start infinite loop for video frame processing if video file is valid
-    while vid_valid:
-
-        # read frame and convert it from BGR to HSV
+    # start infinite loop for video frame processing
+    while True:
+        global frame_counter
+        # read frame, add to frame counter, and convert frame from BGR to HSV
         _,frame = vid.read()
+        frame_counter += 1
+        # look for q or end of video to break loop
+        c = cv2.waitKey(1)
+        if 'q' == chr(c & 255) or frame_counter == int(vid.get(cv2.CAP_PROP_FRAME_COUNT)):
+            break
         hsv = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
         # create numpy arrays from HSV lists
         lower = np.array(hsvLowerThresh)
@@ -59,11 +63,9 @@ def runMainProcess():
         # show the processed frame
         cv2.imshow('Processed Video', frame)
         # cv2.imshow('mask', mask)
-        # wait for key q to be pressed
-        if cv2.waitKey(1) & 0xFF == ord('q'):
-            break
 
-# run the function and releaset the video from que, and destroy all windows after function is finished
-runMainProcess()
+# if video is valid run main processing then release the video and destroy all windows
+if vidValid():
+    runMainProcess()
 vid.release()
 cv2.destroyAllWindows()
