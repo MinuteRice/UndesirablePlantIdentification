@@ -1,5 +1,13 @@
 # UndesirablePlantIdentification
 Main EE551 Semester Project
+Updated 4/25/2019:
+In order to run the package:
+-	Clone this repository to your local
+-	Create a new virtual envirnonment
+-	Install OpenCV and Pytest modules
+-	Working on the new envirnoment, root into the repostory
+-	In cmd, write "python Main.py --video <full root location of vid1.MOV included in the Video folder of this repository>
+This will launch the processing of an example video.
 
 Project Proposal:
 	
@@ -25,4 +33,4 @@ To Do & Delivery Dates:
 3/29 – Have image data (visit to local farm to gather photos/source from google or database)  
 4/5 – Be able to process select images of weeds and categorize  
 4/19 – Work on expansion of exposure to images and be able to identify weeds consistently  
-4/26 – Cleaned up organization and documentation – Final  
+4/26 – Cleaned up organization and documentation – Final 
