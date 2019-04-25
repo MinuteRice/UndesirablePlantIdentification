@@ -5,13 +5,13 @@ In order to run the package:
 -	Clone this repository to your local
 -	Create a new virtual envirnonment
 -	Install OpenCV, NumPy, and Pytest modules
--	Working on the new envirnoment, root into the repostory
--	In cmd, write "python Main.py --video <full root location of vid1.MOV included in the Video folder of this repository>
-This will launch the processing of an example video.
+-	Working on the new envirnoment, root into the repository UndesirablePlantIdentification
+-	In cmd, write "python src/main.py --video Video/vid1.MOV
+-	Enter - the proccessed example video will display. Press q to exit or let the video run out.
 
 Project Outcomes:
 
-In this project, I was able to successfully utilize OpenCV's API to identify weeds in a crop row. The program works by loading a video file through the command prompt and iterating through the frames. Each frame of the video is first converted from BGR (blue, green, red) to HSV (hue, saturation, value). A range of HSV values are defined that represent a green color range. Each frame is then evaluated and the
+In this project, I was able to successfully utilize OpenCV's API to identify weeds in a crop row. The program works by loading a video file through the command prompt and iterating through the frames. Each frame of the video is first converted from BGR (blue, green, red) to HSV (hue, saturation, value). A range of HSV values is defined that represent a green color range. Each frame is then evaluated for regions where the colors are in the HSV range. A bitwise mask is generated and evaluated and positive areas (white area) is contoured. Contours in a certain range of area are then identifed and encompassing circles are drawn on the original frame, effectively identifying the location of a weed.
 
 
 Original Project Proposal:
