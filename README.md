@@ -1,15 +1,20 @@
 # UndesirablePlantIdentification
 Main EE551 Semester Project
-Updated 4/25/2019:
+
 In order to run the package:
 -	Clone this repository to your local
 -	Create a new virtual envirnonment
--	Install OpenCV and Pytest modules
+-	Install OpenCV, NumPy, and Pytest modules
 -	Working on the new envirnoment, root into the repostory
 -	In cmd, write "python Main.py --video <full root location of vid1.MOV included in the Video folder of this repository>
 This will launch the processing of an example video.
 
-Project Proposal:
+Project Outcomes:
+
+In this project, I was able to successfully utilize OpenCV's API to identify weeds in a crop row. The program works by loading a video file through the command prompt and iterating through the frames. Each frame of the video is first converted from BGR (blue, green, red) to HSV (hue, saturation, value). A range of HSV values are defined that represent a green color range. Each frame is then evaluated and the
+
+
+Original Project Proposal:
 	
 There are 915 million acres of farm land in the United States, all of which use harmful herbicides to kill weeds that inhibit the production of the crops. These herbicides are necessary to make farming fiscally possible but the environmental and human damage these carcinogenic chemicals cause is unacceptable. This project will utilize Python’s image processing and machine learning capabilities to identify known weeds in a farm setting. This capability can allow for the identification of weeds and the subsequent precision application of herbicides. The precision application of herbicides could drastically reduce the amount of chemicals applied to our land, its stewards, and our crops.  
 
