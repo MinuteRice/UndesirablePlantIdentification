@@ -13,6 +13,16 @@ Project Outcomes:
 
 In this project, I was able to successfully utilize OpenCV's API to identify weeds in a crop row. The program works by loading a video file through the command prompt and iterating through the frames. Each frame of the video is first converted from BGR (blue, green, red) to HSV (hue, saturation, value). A range of HSV values is defined that represent a green color range. Each frame is then evaluated for regions where the colors are in the HSV range. A bitwise mask is generated and evaluated and positive areas (white area) is contoured. Contours in a certain range of area are then identifed and encompassing circles are drawn on the original frame, effectively identifying the location of a weed.
 
+Additional refining is needed. Adjusting the HSV range can capture more colors. Increasing the range of the contour area can capture more larger/smaller groupings. Making the ranges too large can lead to false positives, while too small can lead to low identification rates.
+
+![alt text](ScreenShots/1.png "Mask with small HSV range")
+
+![alt text](ScreenShots/2.png "Low rate of identification")
+
+![alt text](ScreenShots/4.png "Mask with large HSV range")
+
+![alt text](ScreenShots/3.png "High rate of identification")
+
 
 Original Project Proposal:
 	
