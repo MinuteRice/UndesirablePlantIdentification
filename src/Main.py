@@ -28,17 +28,22 @@ def runMainProcess():
     # start infinite loop for video frame processing
     while True:
         global frame_counter
-        # read frame, add to frame counter, and convert frame from BGR to HSV
+        # read frame and add to frame counter
         _,frame = vid.read()
         frame_counter += 1
+
         # look for q or end of video to break loop
         c = cv2.waitKey(1)
         if 'q' == chr(c & 255) or frame_counter == int(vid.get(cv2.CAP_PROP_FRAME_COUNT)):
             break
+
+        # convert frame from BGR to HSV
         hsv = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
+
         # create numpy arrays from HSV lists
         lower = np.array(hsvLowerThresh)
         upper = np.array(hsvUpperThresh)
+
         # create a mask that identifies pixels of the original frame that are within the HSV range
         mask = cv2.inRange(hsv, lower, upper)
         mask = cv2.erode(mask, None, iterations=2)
@@ -50,6 +55,7 @@ def runMainProcess():
         # copy the mask because the operation will overwrite the original
         # find the contours of the mask using simplified extraction methods
         cnts,__ = cv2.findContours(mask.copy(), cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+
         # for each contour found in the frame, filter out any that have very large areas (desired crops)
         # and any contours that  have very small areas ( misc pixels that reside in the HSV range)
         for cnt in cnts:
@@ -60,6 +66,7 @@ def runMainProcess():
                 radius = int(radius)
                 # draw the calculated circle inr red on the original frame
                 cv2.circle(frame,center, radius,(7,7,255),5)
+
         # show the processed frame
         cv2.imshow('Processed Video', frame)
         # cv2.imshow('mask', mask)
