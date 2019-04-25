@@ -16,9 +16,9 @@ hsvUpperThresh = [100, 255, 255] #100-255-255
 frame_counter = 0
 
 # video valid function
-def vidValid():
+def vidValid(source):
     # check that video file is valid/compatible
-    if vid.read() == (False, None):
+    if source.read() == (False, None):
         print('Script Aborted: Error Opening Video File! Please Make Sure To Supply The Full Path For Argument --video')
     else:
         return True
@@ -72,7 +72,7 @@ def runMainProcess():
         # cv2.imshow('mask', mask)
 
 # if video is valid run main processing then release the video and destroy all windows
-if vidValid():
+if vidValid(vid):
     runMainProcess()
 vid.release()
 cv2.destroyAllWindows()

@@ -1,8 +1,6 @@
 import pytest
+import cv2
 
-import Main
-
-def test_example():
-    Main.args = 'C:/Users\Test\PycharmProjects/UWIDS/vid3.MOV'
-
-    assert(Main.vidValid())
+def test_source():
+    vid = cv2.VideoCapture('vid1.MOV')
+    assert vid
